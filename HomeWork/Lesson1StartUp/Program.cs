@@ -3,7 +3,7 @@
 //а) используя склеивание;
 //б) используя форматированный вывод;
 //в) * используя вывод со знаком $.
-
+//
 using MethodsLib;
 using System;
 using System.Collections.Generic;

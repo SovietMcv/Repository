@@ -9,7 +9,7 @@ namespace HomeWorkLesson2
 {
     public partial class HomeWorkTasks
     {
-        static int MaxNum = 1000000;
+        static int MaxNum = 1000000000;
         static int MinNum = 1;
         static int GoodNumsCount = 0;
         static int CurSum;

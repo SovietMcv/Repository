@@ -15,15 +15,27 @@ namespace MethodsLib
         public static double NumsCheck(string text)
         {
             var res = 0.0;
-            if (Double.TryParse(text, out res) == false)
+            try
             {
-                Console.WriteLine("Некорректное значение, повторите ввод пожалуйста.");
-                var newdata = Console.ReadLine();
-                res = Convert.ToDouble(NumsCheck(newdata));
+                if (Double.TryParse(text, out res) == false)
+                {
+                    Console.WriteLine("Некорректное значение, повторите ввод пожалуйста.");
+                    var newdata = Console.ReadLine();
+                    res = Convert.ToDouble(NumsCheck(newdata));
+                }
+                else if (Double.TryParse(text, out res) == true && res < 0)
+                {
+                    throw new ArgumentOutOfRangeException ("Значение меньше 0 повторите ввод");
+                }
+                else
+                {
+                    res = Convert.ToDouble(text);
+                }
+                return res;
             }
-            else
+            catch(ArgumentOutOfRangeException ex)
             {
-                res = Convert.ToDouble(text);
+                Console.WriteLine(ex.ParamName);
             }
             return res;
         }

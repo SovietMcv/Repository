@@ -10,7 +10,7 @@ namespace Lesson4MainBranch
 {
     class Lesson4TasksFetch
     {
-        static string[] TaskMap = new string[] { "NumPad1 = Операции с массивами", "NumPad2 = Авторизация со считыванием из файла логина и пароля", "Numpad3 = Операции с двумерными массивами" };
+        static string[] TaskMap = new string[] { "NumPad1 = Операции с массивами", "NumPad2 = Авторизация со считыванием из файла логина и пароля", "Numpad3 = Операции с двумерными массивами","Escape = Выйти из программы" };
         static ConsoleKey[] KeyValues = new ConsoleKey[] { ConsoleKey.NumPad1, ConsoleKey.NumPad2, ConsoleKey.NumPad3, ConsoleKey.NumPad4, ConsoleKey.Escape };
         static ConsoleKeyInfo key;
         static bool GoForward = false;

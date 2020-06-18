@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 using HomeWorkLesson2;
 using MethodsLib;
 
+/*
+3. *Для двух строк написать метод, определяющий, является ли одна строка перестановкой другой. Регистр можно не учитывать:
+а) с использованием методов C#;
+б) *разработав собственный алгоритм.
+Например:
+badc являются перестановкой abcd.
+ */
+
 namespace Lesson5HomeWork
 {
     static class Reallocation

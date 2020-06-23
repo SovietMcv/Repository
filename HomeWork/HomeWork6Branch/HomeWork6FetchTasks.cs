@@ -100,29 +100,52 @@ namespace HomeWork6Branch
             fs.Close();
             return dList;
         }
-        //Просто не успевал сделать пункт Д, поэтому оставил без него
-        static int Comparator(Students s1, Students s2)
+        static int SortProcessing(int SortType, SortFunc<int> F,SortFunc<string> F1,Students s1,Students s2)
         {
-            if (choise == 1)
+            if (SortType == 1)
             {
-                if (s1.Age > s2.Age) return 1;
-                else if (s1.Age < s2.Age) return -1;
+                return F.Invoke(s1.Age, s2.Age);
+            }
+            else if (SortType == 2)
+            {
+                return F.Invoke(s1.stage, s2.stage);
+            }
+            else if (SortType == 3)
+            {
+                int ageres = F.Invoke(s1.Age, s2.Age);
+                int stageres = F.Invoke(s1.Age, s2.Age);
+                if ((stageres == 1 && ageres == 1) || (stageres == 1 && ageres == -1)) return 1;
+                else if ((stageres == -1 && ageres == 1) || (stageres == -1 && ageres == -1)) return -1;
                 else return 0;
             }
-            else if (choise == 2)
+            else if (SortType == 4)
             {
-                if (s1.stage > s2.stage) return 1;
-                else if (s1.stage < s2.stage) return -1;
-                else return 0;
+                return F1.Invoke(s1.FamilyName, s2.FamilyName);
             }
-            else if (choise == 3)
+            else if (SortType == 5)
             {
-                if ((s1.stage > s2.stage && s1.Age > s2.Age )|| (s1.stage > s2.stage && s1.Age < s2.Age)) return 1;
-                else if ((s1.stage < s2.stage && s1.Age < s2.Age) || (s1.stage < s2.stage && s1.Age > s2.Age)) return - 1;
-                else return 0;
+                return F1.Invoke(s1.City, s2.City);
             }
             else return 0;
 
+
+        }
+        static int IntCompare(int nums1,int nums2)
+        {
+            if (nums1 > nums2) return 1;
+            else if (nums1 < nums2) return -1;
+            else return 0;
+        }
+        static int StringCompare(string line1,string line2)
+        {
+            if (line1[0] > line2[0]) return 1;
+            else if (line1[0] < line2[0]) return -1;
+            else return 0;
+        }
+        //Просто не успевал сделать пункт Д, поэтому оставил без него/ Update - переделал, не очень красиво, но сходу не нашёл как сделать повеселее. Ещё подумаю.
+        static int Comparator(Students s1, Students s2)
+        {
+            return SortProcessing(choise, IntCompare, StringCompare, s1, s2);
         }       
         
         static void FetchTasks(ConsoleKey key)
@@ -203,7 +226,7 @@ namespace HomeWork6Branch
                             slist.Add(new Students() { FamilyName = arr[0], Name = arr[1], Univercity = arr[2], Faculty = arr[3], Department = arr[4], Age = Convert.ToInt32(arr[5]), stage = Convert.ToInt32(arr[6]), City = arr[7] });
                         }
                         sr.Close();
-                        Console.WriteLine("Укажите способ сортировки 1 - по возрасту, 2 - по курсу, 3- по курсе и возрасту");
+                        Console.WriteLine("Укажите способ сортировки 1 - по возрасту, 2 - по курсу, 3- по курсе и возрасту, 4 - по фамилии, 5 - по городу ");
                         choise = Convert.ToInt32(MyMethods.NumsCheckNoRestr(Console.ReadLine()));
                         slist.Sort(Comparator);
                         foreach (var el in slist)

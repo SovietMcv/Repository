@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using MethodsLib;
 
 //Выполнил Федосенко Антон Александрович
@@ -233,10 +234,19 @@ namespace HomeWork6Branch
                         {
                             Console.WriteLine($"Фамилия: {el.FamilyName}, Имя: {el.Name}, Университет: {el.Univercity}, Факультет: {el.Faculty}, Возраст: {el.Age}, Курс: {el.stage}");
                         }
+                        ConvertToXml("Students.xml", slist);
                         Console.ReadLine();
                     }
                     break;
             }
+        }
+
+        public static void ConvertToXml(string filename, List<Students> list)
+        {
+            XmlSerializer sr = new XmlSerializer(typeof(List<Students>));
+            FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write);
+            sr.Serialize(fs, list);
+            fs.Close();
         }
 
         static void Main(string[] args)

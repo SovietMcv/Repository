@@ -18,5 +18,10 @@ namespace HomeWork6Branch
        public string Faculty { get; set; }
        public string City { get; set; }
 
+        public Students()
+        {
+
+        }
+
     }
 }

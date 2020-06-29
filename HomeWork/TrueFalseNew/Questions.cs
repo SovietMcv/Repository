@@ -22,7 +22,8 @@ namespace TrueFalseNew
         }
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            QuestionsTable.Rows.Clear();
+            if (MessageBox.Show("Вы уверены, что хотите удалить все строки?", "Внимание", MessageBoxButtons.YesNo) == DialogResult.Yes) QuestionsTable.Rows.Clear();
+            else return;
         }
         private void Save_Click(object sender, EventArgs e)
         {
@@ -41,7 +42,6 @@ namespace TrueFalseNew
             {
                 QuestionsTable.Rows[i].Cells[0].Value = questionsData.ql[i].Question;
                 QuestionsTable.Rows[i].Cells[1].Value = questionsData.ql[i].TrueFalse;
-
             }
         }
 
@@ -53,6 +53,11 @@ namespace TrueFalseNew
         private void Questions_Load(object sender, EventArgs e)
         {
             GetData();
+        }
+
+        private void AboutProgram_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("База данных V1.3\n Разработчик: Федосенко Антон Александрович","О программе");
         }
     }
 }

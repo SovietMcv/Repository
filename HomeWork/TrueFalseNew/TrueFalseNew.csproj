@@ -71,7 +71,7 @@
       <DependentUpon>TrueFalseForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -105,9 +105,12 @@
   <ItemGroup>
     <Content Include="Icons\delete_64px.png" />
     <Content Include="Icons\ok_64px.png" />
+    <None Include="Resources\Que.png" />
+    <None Include="Resources\Delete.jpg" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\synchronize_64px.png" />
     <None Include="Resources\delete_64px.png" />
     <None Include="Resources\ok_64px.png" />
-    <None Include="Resources\Image1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -39,6 +39,29 @@ namespace MethodsLib
             }
             return res;
         }
+        public static double NumsCheckNoRestr(string text)
+        {
+            var res = 0.0;
+            try
+            {
+                if (Double.TryParse(text, out res) == false)
+                {
+                    Console.WriteLine("Некорректное значение, повторите ввод пожалуйста.");
+                    var newdata = Console.ReadLine();
+                    res = Convert.ToDouble(NumsCheckNoRestr(newdata));
+                }               
+                else
+                {
+                    res = Convert.ToDouble(text);
+                }
+                return res;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.ParamName);
+            }
+            return res;
+        }
         public static void SetTextPosition(string text,int x, int y)
         {
             Console.SetCursorPosition(x, y);
